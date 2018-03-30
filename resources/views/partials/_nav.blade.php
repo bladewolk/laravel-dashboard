@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="{{ route('dashboard') }}">Start Bootstrap</a>
+    <a class="navbar-brand" href="/dashboard">Start Bootstrap</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -7,39 +7,47 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="{{ route('dashboard') }}">
-                    <i class="fa fa-fw fa-dashboard"></i>
-                    <span class="nav-link-text">Dashboard</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                <a class="nav-link" href="{{ route('charts') }}">
-                    <i class="fa fa-fw fa-area-chart"></i>
-                    <span class="nav-link-text">Charts</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                <a class="nav-link" href="{{ route('tables') }}">
-                    <i class="fa fa-fw fa-table"></i>
-                    <span class="nav-link-text">Tables</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
-                   data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-wrench"></i>
-                    <span class="nav-link-text">Components</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseComponents">
-                    <li>
-                        <a href="{{ route('components', 'navbar') }}">Navbar</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('components', 'cards') }}">Cards</a>
-                    </li>
-                </ul>
-            </li>
+            @if (auth()->user()->hasRoles(['ADMIN', 'ROOT']))
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <a class="nav-link" href="{{ route('dashboard') }}">
+                        <i class="fa fa-fw fa-dashboard"></i>
+                        <span class="nav-link-text">Dashboard</span>
+                    </a>
+                </li>
+            @endif
+            @if (auth()->user()->hasRoles(['ADMIN', 'ROOT']))
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                    <a class="nav-link" href="{{ route('charts') }}">
+                        <i class="fa fa-fw fa-area-chart"></i>
+                        <span class="nav-link-text">Charts</span>
+                    </a>
+                </li>
+            @endif
+            @if (auth()->user()->hasRoles(['MANAGER', 'ROOT']))
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+                    <a class="nav-link" href="{{ route('tables') }}">
+                        <i class="fa fa-fw fa-table"></i>
+                        <span class="nav-link-text">Tables</span>
+                    </a>
+                </li>
+            @endif
+            @if (auth()->user()->hasRoles(['USER', 'ROOT', 'ADMIN']))
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
+                       data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-wrench"></i>
+                        <span class="nav-link-text">Components</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseComponents">
+                        <li>
+                            <a href="{{ route('components', 'navbar') }}">Navbar</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('components', 'cards') }}">Cards</a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
         </ul>
         <ul class="navbar-nav sidenav-toggler">
             <li class="nav-item">

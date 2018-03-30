@@ -18,13 +18,14 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->namespace('Dashboard')->prefix('dashboard')->group(function () {
-    Route::get('/', 'HomeController@index')->name('dashboard');
-    Route::get('/charts', 'ChartController@index')->name('charts');
-    Route::get('/tables', 'TablesController@index')->name('tables');
+    Route::get('/', 'HomeController@index');
+    Route::get('/home', 'HomeController@dashboard')->name('dashboard')->middleware('roles:ROOT|ADMIN');
+    Route::get('/charts', 'ChartController@index')->name('charts')->middleware('roles:ROOT|ADMIN');
+    Route::get('/tables', 'TablesController@index')->name('tables')->middleware('roles:ROOT|MANAGER');
 
-    Route::get('/components/{view}', 'ComponentsController@index')->name('components');
+    Route::get('/components/{view}', 'ComponentsController@index')->name('components')->middleware('roles:ROOT|ADMIN|USER');
 
     Route::get('{first}/{second?}/{third?}', function () {
-        return redirect('/Dashboard');
+        return redirect('/dashboard');
     });
 });

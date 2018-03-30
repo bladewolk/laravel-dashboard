@@ -9,4 +9,4 @@ require('../../../node_modules/startbootstrap-sb-admin/vendor/datatables/dataTab
 
 require('../../../node_modules/startbootstrap-sb-admin/js/sb-admin.min');
 require('../../../node_modules/startbootstrap-sb-admin/js/sb-admin-datatables.min');
-require('../../../node_modules/startbootstrap-sb-admin/js/sb-admin-charts');
+// require('../../../node_modules/startbootstrap-sb-admin/js/sb-admin-charts');

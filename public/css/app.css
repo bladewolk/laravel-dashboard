@@ -3258,3 +3258,9 @@ html{position:relative;min-height:100%}body{overflow-x:hidden}body.sticky-footer
   clip: auto;
 }
 
+.welcome {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+  font-size: 30px;
+}
+
