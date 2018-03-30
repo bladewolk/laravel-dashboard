@@ -4,7 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require('bootstrap');
 require('../../../node_modules/startbootstrap-sb-admin/vendor/jquery-easing/jquery.easing.min');
 require('../../../node_modules/startbootstrap-sb-admin/vendor/chart.js/Chart.bundle.min');
 

@@ -23,4 +23,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 @yield('content')
+
+@section('scripts')
 </html>

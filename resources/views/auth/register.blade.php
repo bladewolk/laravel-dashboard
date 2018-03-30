@@ -9,29 +9,29 @@
                     @csrf
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <label for="exampleInputName">First name</label>
-                                <input class="form-control @if($errors->has('name')) is-invalid @endif"
-                                       id="exampleInputName" type="text"
-                                       aria-describedby="nameHelp" placeholder="Enter first name" name="name">
+                                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
+                                       id="exampleInputName"
+                                       type="text"
+                                       value="{{ old('name') }}"
+                                       aria-describedby="nameHelp" placeholder="Enter first name"
+                                       name="name">
                                 @if($errors->has('name'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('name') }}
                                     </div>
                                 @endif
                             </div>
-                            <div class="col-md-6">
-                                <label for="exampleInputLastName">Last name</label>
-                                <input class="form-control" id="exampleInputLastName" type="text"
-                                       aria-describedby="nameHelp" placeholder="Enter last name">
-                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input class="form-control @if($errors->has('email')) is-invalid @endif" id="exampleInputEmail1"
+                        <input class="form-control {{  $errors->has('email') ? 'is-invalid' : ''}}"
+                               id="exampleInputEmail1"
                                type="email"
                                name="email"
+                               value="{{ old('email') }}"
                                aria-describedby="emailHelp"
                                placeholder="Enter email">
                         @if($errors->has('email'))
